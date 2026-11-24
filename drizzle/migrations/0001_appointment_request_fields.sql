@@ -1,0 +1,1 @@
+ALTER TABLE public.quote_requests ADD COLUMN IF NOT EXISTS requested_date date, ADD COLUMN IF NOT EXISTS alternative_date date;

@@ -1,0 +1,5 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { pageMeta } from "../lib/seo";
+import { Button } from "../components/ui/button";
+export const Route = createFileRoute("/bedankt-afspraak")({ head: () => ({ ...pageMeta({ title: "Afspraakaanvraag ontvangen | Clima Heat", description: "Uw afspraakaanvraag is ontvangen. Clima Heat neemt contact op om de afspraak te bevestigen.", path: "/bedankt-afspraak" }), meta: [...pageMeta({ title: "Afspraakaanvraag ontvangen | Clima Heat", description: "Clima Heat neemt contact op om de afspraak te bevestigen.", path: "/bedankt-afspraak" }).meta, { name: "robots", content: "noindex" }] }), component: Bedankt });
+function Bedankt() { return <section className="mx-auto max-w-4xl px-5 py-20"><p className="eyebrow">Aanvraag ontvangen</p><h1 className="display-2 mt-6">Bedankt voor uw aanvraag!</h1><p className="lead mt-6">We nemen zo snel mogelijk contact met u op om uw afspraak te bevestigen.</p><p className="mt-4 font-medium">Uw afspraak is pas definitief na bevestiging door Clima Heat.</p><Button asChild className="cta-secondary mt-8"><Link to="/">Terug naar home →</Link></Button></section>; }

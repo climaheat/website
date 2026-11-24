@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /bedankt-offerte
+Disallow: /bedankt-onderhoud
+Disallow: /bedankt-herstelling
