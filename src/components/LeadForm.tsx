@@ -6,7 +6,7 @@ import { ATTACHMENT_RULES, checkAttachment, formatBytes } from "../lib/lead-atta
 import { LEAD_BRANDS, LEAD_SUBJECTS, resolveSubject, type LeadVariant } from "../lib/lead-options";
 import { PriceSummary } from "./Pricing";
 import { Button } from "./ui/button";
-import { PRICES, euros, gross, priceForSubject, serviceLabel, VAT_NOTE, MISSED_NOTE, PARKING_NOTE } from "../lib/pricing";
+import { PRICES, euros, priceForSubject, serviceLabel, VAT_NOTE, MISSED_NOTE, PARKING_NOTE } from "../lib/pricing";
 import { appointmentRules, todayUtc } from "../lib/appointment-rules";
 import { track } from "../lib/tracking";
 
@@ -339,7 +339,7 @@ export function LeadForm({
         {appointment && <div className="mt-6 border-t border-border pt-5">
           <p className="text-xs leading-relaxed text-muted-foreground">{MISSED_NOTE}</p>
           <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{PARKING_NOTE} Bijkomende werkzaamheden bespreken we vooraf. Geen afzonderlijke weekendtoeslagen.</p>
-          {priceKey === "repair" && <p className="mt-3 text-xs text-muted-foreground">Last-minute spoedtoeslag na 22.00 uur: + {euros(gross(PRICES.repair.lateSurcharge))} incl. 21% btw ({euros(PRICES.repair.lateSurcharge)} excl. btw), boven op het eerste uur. Geen gegarandeerde interventietermijn.</p>}
+          {priceKey === "repair" && <p className="mt-3 text-xs text-muted-foreground">Last-minute spoedtoeslag na 22.00 uur: + {euros(PRICES.repair.lateSurcharge)} excl. btw, boven op het eerste uur. Geen gegarandeerde interventietermijn.</p>}
           <label className="mt-4 flex items-start gap-2 text-sm"><input type="checkbox" name="conditions" value="accepted" required className="mt-1 accent-accent" /><span>Ik heb de tarieven en voorwaarden gelezen. Mijn afspraak is pas definitief na bevestiging door Clima Heat. <span className="text-accent">*</span></span></label>
           {errors["conditions"] && <p role="alert" className="mt-2 text-xs text-destructive">{errors["conditions"]}</p>}
         </div>}

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { PRICES, euros, gross, VAT_NOTE, vatHint, serviceLabel, type PriceKey } from "../lib/pricing";
+import { PRICES, euros, VAT_NOTE, serviceLabel, type PriceKey } from "../lib/pricing";
 import { AppointmentButton } from "./AppointmentButton";
 import { Button } from "./ui/button";
 import { QuoteButton } from "./QuoteButton";
@@ -22,11 +22,9 @@ export function PriceSummary({ priceKey, action = true }: { priceKey: PriceKey; 
   const price = PRICES[priceKey];
   return <div className="flex h-full flex-col rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm transition-shadow hover:shadow-md">
     <h3 className="text-base font-semibold">{serviceLabel(price.subject)}</h3>
-    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1"><span className="text-4xl font-semibold tracking-tight tabular-nums text-accent-deep">{euros(gross(price.net))}</span><span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">incl. 21% btw</span></p>
-    <p className="mt-1 text-sm tabular-nums text-muted-foreground">{euros(price.net)} excl. btw</p>
-    {"extraHour" in price && <p className="mt-3 text-sm font-medium">Elk bijkomend uur: {euros(gross(price.extraHour))} incl. 21% btw <span className="font-normal text-muted-foreground">({euros(price.extraHour)} excl. btw)</span></p>}
-    {"tiers" in price && <dl className="mt-4 grid gap-3 border-t border-border pt-4">{price.tiers.map(tier => <div key={tier.count}><dt className="text-sm font-medium">Vanaf {tier.count} ketels in dezelfde straat</dt><dd className="mt-1 text-sm font-semibold tabular-nums">{euros(gross(tier.net))} incl. 21% btw per ketel<span className="mt-1 block font-normal text-muted-foreground">{euros(tier.net)} excl. btw per ketel</span></dd></div>)}</dl>}
-    <p className="mt-3 text-xs leading-relaxed text-muted-foreground">{vatHint(priceKey)}</p>
+    <p className="mt-4 flex flex-wrap items-baseline gap-x-2 gap-y-1"><span className="text-4xl font-semibold tracking-tight tabular-nums text-accent-deep">{euros(price.net)}</span><span className="rounded-full bg-muted px-2.5 py-1 text-xs font-medium text-muted-foreground">excl. btw</span></p>
+    {"extraHour" in price && <p className="mt-3 text-sm font-medium">Elk bijkomend uur: {euros(price.extraHour)} excl. btw</p>}
+    {"tiers" in price && <dl className="mt-4 grid gap-3 border-t border-border pt-4">{price.tiers.map(tier => <div key={tier.count}><dt className="text-sm font-medium">Vanaf {tier.count} ketels in dezelfde straat</dt><dd className="mt-1 text-sm font-semibold tabular-nums">{euros(tier.net)} excl. btw per ketel</dd></div>)}</dl>}
     <p className="mt-4 border-t border-border pt-4 text-sm leading-relaxed text-muted-foreground">{price.exclusion}</p>
     {action && <div className="mt-auto pt-5"><AppointmentButton subject={price.subject} location="price" label={priceKey === "repair" ? "Vraag een interventie aan" : "Maak een afspraak"} className="cta-primary w-full" /></div>}
   </div>;

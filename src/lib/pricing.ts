@@ -15,9 +15,9 @@ export function euros(amount: number) { return new Intl.NumberFormat("nl-BE", { 
 export function priceForSubject(subject: string): PriceKey | undefined {
   return (["gas", "oil", "repair", "plumbing"] as const).find(key => PRICES[key].subject === subject);
 }
-export const VAT_NOTE = "Prijzen in het groot zijn inclusief 21% btw; het basistarief exclusief btw staat eronder. Afhankelijk van de wettelijke voorwaarden kan 6% btw van toepassing zijn. Materialen en wisselstukken zijn niet inbegrepen, tenzij uitdrukkelijk vermeld. Volledige renovaties vallen niet onder deze tarieven en gebeuren op offerte.";
+export const VAT_NOTE = "Alle prijzen zijn exclusief btw. Materialen en wisselstukken zijn niet inbegrepen, tenzij uitdrukkelijk vermeld. Volledige renovaties vallen niet onder deze tarieven en gebeuren op offerte.";
 export function vatHint(key: PriceKey) { return key === "gas" ? `Afhankelijk van de wettelijke voorwaarden kan 6% btw van toepassing zijn: dan ${euros(gross(PRICES.gas.net, 6))}.` : "Afhankelijk van de wettelijke voorwaarden kan een ander btw-tarief van toepassing zijn."; }
-export const MISSED_NOTE = `Een vergoeding van ${euros(gross(PRICES.missed.net))} incl. 21% btw (${euros(PRICES.missed.net)} excl. btw) kan worden aangerekend wanneer u niet thuis bent op het afgesproken tijdstip, de ketel niet toegankelijk is of het onderhoud door omstandigheden bij u niet kan doorgaan.`;
+export const MISSED_NOTE = `Een vergoeding van ${euros(PRICES.missed.net)} excl. btw kan worden aangerekend wanneer u niet thuis bent op het afgesproken tijdstip, de ketel niet toegankelijk is of het onderhoud door omstandigheden bij u niet kan doorgaan.`;
 export const PARKING_NOTE = "Eventuele parkeerkosten in het historisch centrum van Antwerpen kunnen afzonderlijk worden aangerekend wanneer dit vooraf duidelijk is meegedeeld. Parkeerboetes en retributies worden niet automatisch doorgerekend.";
 export function serviceIntent(variant: string, subject?: string) {
   if (variant === "herstelling") return { subject: APPOINTMENT_SUBJECTS[2], price: "repair" as PriceKey };

@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { PriceSummary } from "../components/Pricing";
 import { Button } from "../components/ui/button";
-import { PRICES, euros, gross } from "../lib/pricing";
+import { PRICES, euros } from "../lib/pricing";
 import { ServicePage } from "../components/ServicePage";
 import { breadcrumbSchema, faqSchema, pageMeta, serviceSchema } from "../lib/seo";
 import { company } from "../lib/site";
@@ -21,7 +21,7 @@ const faq = [
   },
   {
     q: "Wat kost een onderhoud?",
-    a: `Standaard gasketelonderhoud kost ${euros(gross(PRICES.gas.net))} incl. 21% btw (${euros(PRICES.gas.net)} excl. btw). Onderhoud stookolieketel (mazoutketel) kost ${euros(gross(PRICES.oil.net))} incl. 21% btw (${euros(PRICES.oil.net)} excl. btw). Vanaf 3 stookolieketels in dezelfde straat geldt ${euros(gross(PRICES.oil.tiers[0].net))} incl. 21% btw per ketel (${euros(PRICES.oil.tiers[0].net)} excl. btw). Wisselstukken en materialen zijn niet inbegrepen; eventuele bijkomende werkzaamheden bespreken we vooraf.`,
+    a: `Standaard gasketelonderhoud kost ${euros(PRICES.gas.net)} excl. btw. Onderhoud stookolieketel (mazoutketel) kost ${euros(PRICES.oil.net)} excl. btw. Vanaf 3 stookolieketels in dezelfde straat geldt ${euros(PRICES.oil.tiers[0].net)} excl. btw per ketel. Wisselstukken en materialen zijn niet inbegrepen; eventuele bijkomende werkzaamheden bespreken we vooraf.`,
   },
   {
     q: "Krijg ik een attest na het onderhoud?",

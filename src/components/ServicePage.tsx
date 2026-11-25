@@ -95,7 +95,7 @@ export function ServicePage({
         breadcrumbs={breadcrumbs}
         video={heroVideo}
         aside={
-          intent ? <div className="rounded-lg bg-card p-6 text-card-foreground"><p className="eyebrow">Transparant tarief</p><PriceSummary priceKey={intent.price} /><p className="text-xs leading-relaxed text-muted-foreground">Basistarief exclusief btw, groot weergegeven inclusief 21% btw. Uw afspraak is pas definitief na bevestiging.</p>{intent.price === "plumbing" && <QuoteButton location="sanitary_larger" subject="Grotere sanitaire werkzaamheden" className="cta-secondary mt-4" />}</div> : <div id="aanvraag"><LeadForm variant="offerte" defaultSubject={formSubject} compact id="aanvraag-form" /></div>
+          intent ? <div className="rounded-lg bg-card p-6 text-card-foreground"><p className="eyebrow">Transparant tarief</p><PriceSummary priceKey={intent.price} /><p className="text-xs leading-relaxed text-muted-foreground">Prijs exclusief btw. Uw afspraak is pas definitief na bevestiging.</p>{intent.price === "plumbing" && <QuoteButton location="sanitary_larger" subject="Grotere sanitaire werkzaamheden" className="cta-secondary mt-4" />}</div> : <div id="aanvraag"><LeadForm variant="offerte" defaultSubject={formSubject} compact id="aanvraag-form" /></div>
         }
       />
 
